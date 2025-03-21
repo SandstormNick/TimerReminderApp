@@ -1,6 +1,6 @@
 ﻿namespace TimerReminderApp
 {
-    partial class Form1
+    partial class TimeReminderForm
     {
         /// <summary>
         ///  Required designer variable.

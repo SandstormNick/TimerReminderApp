@@ -1,8 +1,8 @@
 namespace TimerReminderApp
 {
-    public partial class Form1 : Form
+    public partial class TimeReminderForm : Form
     {
-        public Form1()
+        public TimeReminderForm()
         {
             InitializeComponent();
         }
