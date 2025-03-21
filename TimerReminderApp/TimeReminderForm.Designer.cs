@@ -28,14 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimeReminderForm));
             txtReminderDescription = new TextBox();
             nudHours = new NumericUpDown();
             nudMinutes = new NumericUpDown();
             lblHours = new Label();
             lblMinutes = new Label();
             btnStartCancel = new Button();
+            niMain = new NotifyIcon(components);
+            cmsNotifyMain = new ContextMenuStrip(components);
+            showAppToolStripMenuItem = new ToolStripMenuItem();
+            exitToolStripMenuItem = new ToolStripMenuItem();
+            tmrCountdown = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)nudHours).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudMinutes).BeginInit();
+            cmsNotifyMain.SuspendLayout();
             SuspendLayout();
             // 
             // txtReminderDescription
@@ -52,6 +60,7 @@
             nudHours.Name = "nudHours";
             nudHours.Size = new Size(75, 27);
             nudHours.TabIndex = 1;
+            nudHours.ValueChanged += nudHours_ValueChanged;
             // 
             // nudMinutes
             // 
@@ -60,6 +69,7 @@
             nudMinutes.Name = "nudMinutes";
             nudMinutes.Size = new Size(75, 27);
             nudMinutes.TabIndex = 2;
+            nudMinutes.ValueChanged += nudMinutes_ValueChanged;
             // 
             // lblHours
             // 
@@ -83,12 +93,47 @@
             // 
             // btnStartCancel
             // 
+            btnStartCancel.Enabled = false;
             btnStartCancel.Location = new Point(12, 146);
             btnStartCancel.Name = "btnStartCancel";
             btnStartCancel.Size = new Size(386, 29);
             btnStartCancel.TabIndex = 5;
             btnStartCancel.Text = "Start";
             btnStartCancel.UseVisualStyleBackColor = true;
+            btnStartCancel.Click += btnStartCancel_Click;
+            // 
+            // niMain
+            // 
+            niMain.ContextMenuStrip = cmsNotifyMain;
+            niMain.Icon = (Icon)resources.GetObject("niMain.Icon");
+            niMain.Text = "Timer Reminder";
+            niMain.MouseDoubleClick += niMain_MouseDoubleClick;
+            // 
+            // cmsNotifyMain
+            // 
+            cmsNotifyMain.ImageScalingSize = new Size(20, 20);
+            cmsNotifyMain.Items.AddRange(new ToolStripItem[] { showAppToolStripMenuItem, exitToolStripMenuItem });
+            cmsNotifyMain.Name = "cmsNotifyMain";
+            cmsNotifyMain.Size = new Size(147, 52);
+            // 
+            // showAppToolStripMenuItem
+            // 
+            showAppToolStripMenuItem.Name = "showAppToolStripMenuItem";
+            showAppToolStripMenuItem.Size = new Size(146, 24);
+            showAppToolStripMenuItem.Text = "Show App";
+            showAppToolStripMenuItem.Click += showAppToolStripMenuItem_Click;
+            // 
+            // exitToolStripMenuItem
+            // 
+            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            exitToolStripMenuItem.Size = new Size(146, 24);
+            exitToolStripMenuItem.Text = "Exit";
+            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+            // 
+            // tmrCountdown
+            // 
+            tmrCountdown.Interval = 1000;
+            tmrCountdown.Tick += tmrCountdown_Tick;
             // 
             // TimeReminderForm
             // 
@@ -101,10 +146,14 @@
             Controls.Add(nudMinutes);
             Controls.Add(nudHours);
             Controls.Add(txtReminderDescription);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "TimeReminderForm";
             Text = "Timer Reminder";
+            Resize += TimeReminderForm_Resize;
             ((System.ComponentModel.ISupportInitialize)nudHours).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudMinutes).EndInit();
+            cmsNotifyMain.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -117,5 +166,10 @@
         private Label lblHours;
         private Label lblMinutes;
         private Button btnStartCancel;
+        private NotifyIcon niMain;
+        private ContextMenuStrip cmsNotifyMain;
+        private ToolStripMenuItem showAppToolStripMenuItem;
+        private ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Timer tmrCountdown;
     }
 }
