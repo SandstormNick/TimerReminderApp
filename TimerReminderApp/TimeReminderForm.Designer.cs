@@ -30,12 +30,12 @@
         {
             SuspendLayout();
             // 
-            // Form1
+            // TimeReminderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(487, 338);
-            Name = "Form1";
+            ClientSize = new Size(491, 340);
+            Name = "TimeReminderForm";
             Text = "Form1";
             ResumeLayout(false);
         }
