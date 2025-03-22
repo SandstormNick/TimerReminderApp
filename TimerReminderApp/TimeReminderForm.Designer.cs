@@ -146,6 +146,7 @@
             Controls.Add(nudMinutes);
             Controls.Add(nudHours);
             Controls.Add(txtReminderDescription);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TimeReminderForm";
