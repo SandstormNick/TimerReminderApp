@@ -29,6 +29,7 @@ namespace TimerReminderApp
                 remainingSeconds = (hours * 3600) + (minutes * 60);
 
                 SetbtnStartCancelText();
+                ShowHidePanelAndDisplayTime();
                 WindowState = FormWindowState.Minimized;
                 ShowInTaskbar = false;
 
@@ -36,6 +37,8 @@ namespace TimerReminderApp
             }
             else
             {
+                SetbtnStartCancelText();
+                ShowHidePanelAndDisplayTime();
                 tmrCountdown.Stop();
             }
         }
@@ -83,6 +86,12 @@ namespace TimerReminderApp
 
         private void tmrCountdown_Tick(object sender, EventArgs e)
         {
+            int displayHours = remainingSeconds / 3600;
+            int displayMinutes = (remainingSeconds % 3600) / 60;
+            int displaySeconds = remainingSeconds % 60;
+
+            lblDisplayTime.Text = $"{displayHours:D2}:{displayMinutes:D2}:{displaySeconds:D2}";
+
             if (remainingSeconds > 0)
             {
                 remainingSeconds--;
@@ -114,6 +123,20 @@ namespace TimerReminderApp
             }
 
             started = !started;
+        }
+
+        private void ShowHidePanelAndDisplayTime()
+        {
+            if (started)
+            {
+                pnlFormControls.Visible = false;
+                lblDisplayTime.Visible = true;
+            }
+            else
+            {
+                pnlFormControls.Visible = true;
+                lblDisplayTime.Visible = false;
+            }
         }
     }
 }

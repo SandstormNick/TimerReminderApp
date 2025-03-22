@@ -30,66 +30,24 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimeReminderForm));
-            txtReminderDescription = new TextBox();
-            nudHours = new NumericUpDown();
-            nudMinutes = new NumericUpDown();
-            lblHours = new Label();
-            lblMinutes = new Label();
             btnStartCancel = new Button();
             niMain = new NotifyIcon(components);
             cmsNotifyMain = new ContextMenuStrip(components);
             showAppToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
             tmrCountdown = new System.Windows.Forms.Timer(components);
-            ((System.ComponentModel.ISupportInitialize)nudHours).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nudMinutes).BeginInit();
+            pnlFormControls = new Panel();
+            lblMinutes = new Label();
+            lblHours = new Label();
+            nudMinutes = new NumericUpDown();
+            nudHours = new NumericUpDown();
+            txtReminderDescription = new TextBox();
+            lblDisplayTime = new Label();
             cmsNotifyMain.SuspendLayout();
+            pnlFormControls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nudMinutes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudHours).BeginInit();
             SuspendLayout();
-            // 
-            // txtReminderDescription
-            // 
-            txtReminderDescription.Location = new Point(12, 12);
-            txtReminderDescription.Name = "txtReminderDescription";
-            txtReminderDescription.Size = new Size(386, 27);
-            txtReminderDescription.TabIndex = 0;
-            // 
-            // nudHours
-            // 
-            nudHours.Location = new Point(104, 58);
-            nudHours.Maximum = new decimal(new int[] { 24, 0, 0, 0 });
-            nudHours.Name = "nudHours";
-            nudHours.Size = new Size(75, 27);
-            nudHours.TabIndex = 1;
-            nudHours.ValueChanged += nudHours_ValueChanged;
-            // 
-            // nudMinutes
-            // 
-            nudMinutes.Location = new Point(104, 102);
-            nudMinutes.Maximum = new decimal(new int[] { 60, 0, 0, 0 });
-            nudMinutes.Name = "nudMinutes";
-            nudMinutes.Size = new Size(75, 27);
-            nudMinutes.TabIndex = 2;
-            nudMinutes.ValueChanged += nudMinutes_ValueChanged;
-            // 
-            // lblHours
-            // 
-            lblHours.AutoSize = true;
-            lblHours.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblHours.Location = new Point(12, 53);
-            lblHours.Name = "lblHours";
-            lblHours.Size = new Size(68, 28);
-            lblHours.TabIndex = 3;
-            lblHours.Text = "Hours:";
-            // 
-            // lblMinutes
-            // 
-            lblMinutes.AutoSize = true;
-            lblMinutes.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMinutes.Location = new Point(12, 97);
-            lblMinutes.Name = "lblMinutes";
-            lblMinutes.Size = new Size(86, 28);
-            lblMinutes.TabIndex = 4;
-            lblMinutes.Text = "Minutes:";
             // 
             // btnStartCancel
             // 
@@ -135,42 +93,109 @@
             tmrCountdown.Interval = 1000;
             tmrCountdown.Tick += tmrCountdown_Tick;
             // 
+            // pnlFormControls
+            // 
+            pnlFormControls.Controls.Add(lblMinutes);
+            pnlFormControls.Controls.Add(lblHours);
+            pnlFormControls.Controls.Add(nudMinutes);
+            pnlFormControls.Controls.Add(nudHours);
+            pnlFormControls.Controls.Add(txtReminderDescription);
+            pnlFormControls.Location = new Point(2, 4);
+            pnlFormControls.Name = "pnlFormControls";
+            pnlFormControls.Size = new Size(403, 136);
+            pnlFormControls.TabIndex = 6;
+            // 
+            // lblMinutes
+            // 
+            lblMinutes.AutoSize = true;
+            lblMinutes.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblMinutes.Location = new Point(8, 95);
+            lblMinutes.Name = "lblMinutes";
+            lblMinutes.Size = new Size(86, 28);
+            lblMinutes.TabIndex = 9;
+            lblMinutes.Text = "Minutes:";
+            // 
+            // lblHours
+            // 
+            lblHours.AutoSize = true;
+            lblHours.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblHours.Location = new Point(8, 51);
+            lblHours.Name = "lblHours";
+            lblHours.Size = new Size(68, 28);
+            lblHours.TabIndex = 8;
+            lblHours.Text = "Hours:";
+            // 
+            // nudMinutes
+            // 
+            nudMinutes.Location = new Point(100, 100);
+            nudMinutes.Maximum = new decimal(new int[] { 60, 0, 0, 0 });
+            nudMinutes.Name = "nudMinutes";
+            nudMinutes.Size = new Size(75, 27);
+            nudMinutes.TabIndex = 7;
+            nudMinutes.ValueChanged += nudMinutes_ValueChanged;
+            // 
+            // nudHours
+            // 
+            nudHours.Location = new Point(100, 56);
+            nudHours.Maximum = new decimal(new int[] { 24, 0, 0, 0 });
+            nudHours.Name = "nudHours";
+            nudHours.Size = new Size(75, 27);
+            nudHours.TabIndex = 6;
+            nudHours.ValueChanged += nudHours_ValueChanged;
+            // 
+            // txtReminderDescription
+            // 
+            txtReminderDescription.Location = new Point(8, 10);
+            txtReminderDescription.Name = "txtReminderDescription";
+            txtReminderDescription.Size = new Size(386, 27);
+            txtReminderDescription.TabIndex = 5;
+            // 
+            // lblDisplayTime
+            // 
+            lblDisplayTime.AutoSize = true;
+            lblDisplayTime.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDisplayTime.Location = new Point(72, 30);
+            lblDisplayTime.Name = "lblDisplayTime";
+            lblDisplayTime.Size = new Size(253, 81);
+            lblDisplayTime.TabIndex = 10;
+            lblDisplayTime.Text = "00:00:00";
+            lblDisplayTime.Visible = false;
+            // 
             // TimeReminderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(410, 192);
             Controls.Add(btnStartCancel);
-            Controls.Add(lblMinutes);
-            Controls.Add(lblHours);
-            Controls.Add(nudMinutes);
-            Controls.Add(nudHours);
-            Controls.Add(txtReminderDescription);
+            Controls.Add(pnlFormControls);
+            Controls.Add(lblDisplayTime);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
-            MinimizeBox = false;
             Name = "TimeReminderForm";
             Text = "Timer Reminder";
             Resize += TimeReminderForm_Resize;
-            ((System.ComponentModel.ISupportInitialize)nudHours).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nudMinutes).EndInit();
             cmsNotifyMain.ResumeLayout(false);
+            pnlFormControls.ResumeLayout(false);
+            pnlFormControls.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nudMinutes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudHours).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private TextBox txtReminderDescription;
-        private NumericUpDown nudHours;
-        private NumericUpDown nudMinutes;
-        private Label lblHours;
-        private Label lblMinutes;
         private Button btnStartCancel;
         private NotifyIcon niMain;
         private ContextMenuStrip cmsNotifyMain;
         private ToolStripMenuItem showAppToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Timer tmrCountdown;
+        private Panel pnlFormControls;
+        private Label lblMinutes;
+        private Label lblHours;
+        private NumericUpDown nudMinutes;
+        private NumericUpDown nudHours;
+        private TextBox txtReminderDescription;
+        private Label lblDisplayTime;
     }
 }
