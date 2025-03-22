@@ -73,6 +73,12 @@ namespace TimerReminderApp
                 btnStartCancel.Enabled = true;
             else
                 btnStartCancel.Enabled = false;
+
+            if (nudMinutes.Value > 59)
+            {
+                nudMinutes.Value = 0;
+                nudHours.Value += 1;
+            }
         }
 
         private void tmrCountdown_Tick(object sender, EventArgs e)

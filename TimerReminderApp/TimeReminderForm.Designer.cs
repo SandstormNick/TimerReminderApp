@@ -65,7 +65,7 @@
             // nudMinutes
             // 
             nudMinutes.Location = new Point(104, 102);
-            nudMinutes.Maximum = new decimal(new int[] { 59, 0, 0, 0 });
+            nudMinutes.Maximum = new decimal(new int[] { 60, 0, 0, 0 });
             nudMinutes.Name = "nudMinutes";
             nudMinutes.Size = new Size(75, 27);
             nudMinutes.TabIndex = 2;
